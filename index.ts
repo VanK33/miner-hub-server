@@ -13,6 +13,12 @@ app.get("/", (_req, res) => {
   res.send("Hello World!");
 });
 
+app.post("/api/auth", (req, res) => {
+  // const { code, state } = req.body;
+  // if (code && state) {
+  //   res.status(200).json({ message: "Authentication successful" });
+});
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
