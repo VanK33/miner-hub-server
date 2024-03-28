@@ -10,6 +10,12 @@ exports.up = function (knex) {
         table.increments("id");
       })
 
+      //create scope table
+      .createTable("scope", function (table) {
+        table.increments("id");
+        table.varchar("scope", 255).notNullable();
+      })
+
       // create character table
       .createTable("character", function (table) {
         table.increments("id");
@@ -33,17 +39,11 @@ exports.up = function (knex) {
         table.timestamp("token_expiry").notNullable();
       })
 
-      //create scope table
-      .createTable("scope", function (table) {
-        table.increments("id");
-        table.varchar("scope", 255).notNullable();
-      })
-
       // create moons table
       .createTable("moons", function (table) {
         table.increments("id");
-        table.integer("typeId").unsigned().notNullable();
-        table.foreign("typeId").references("invtypes.id");
+        table.integer("typeId").notNullable();
+        table.foreign("typeId").references("invtypes.typeId");
         table.integer("character_id").unsigned().notNullable();
         table.foreign("character_id").references("character.id");
         table.string("name", 255).notNullable();
@@ -56,8 +56,8 @@ exports.up = function (knex) {
       // create gases table
       .createTable("gases", function (table) {
         table.increments("id");
-        table.integer("typeId").unsigned().notNullable();
-        table.foreign("typeId").references("invtypes.id");
+        table.integer("typeId").notNullable();
+        table.foreign("typeId").references("invtypes.typeId");
         table.integer("character_id").unsigned().notNullable();
         table.foreign("character_id").references("character.id");
         table.string("name", 255).notNullable();
@@ -69,8 +69,8 @@ exports.up = function (knex) {
       // create ores table
       .createTable("ores", function (table) {
         table.increments("id");
-        table.integer("typeId").unsigned().notNullable();
-        table.foreign("typeId").references("invtypes.id");
+        table.integer("typeId").notNullable();
+        table.foreign("typeId").references("invtypes.typeId");
         table.integer("character_id").unsigned().notNullable();
         table.foreign("character_id").references("character.id");
         table.string("name", 255).notNullable();
@@ -87,8 +87,8 @@ exports.up = function (knex) {
       // create ices table
       .createTable("ices", function (table) {
         table.increments("id");
-        table.integer("typeId").unsigned().notNullable();
-        table.foreign("typeId").references("invtypes.id");
+        table.integer("typeId").notNullable();
+        table.foreign("typeId").references("invtypes.typeId");
         table.integer("character_id").unsigned().notNullable();
         table.foreign("character_id").references("character.id");
         table.string("name", 255).notNullable();
