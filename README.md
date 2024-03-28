@@ -33,7 +33,7 @@ The project is designed with responsiveness in mind. The goal is to ensure users
 - TypeScript
 - Tailwind CSS
 - Express
-- Postgre SQL
+- MySQL
 - Chart.js
 
 ### WORK FLOW

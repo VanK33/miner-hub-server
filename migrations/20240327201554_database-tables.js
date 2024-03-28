@@ -38,10 +38,12 @@ exports.up = function (knex) {
         table.increments("id");
         table.varchar("scope", 255).notNullable();
       })
+
       // create moons table
-      // for now, we will only
       .createTable("moons", function (table) {
         table.increments("id");
+        table.integer("typeId").unsigned().notNullable();
+        table.foreign("typeId").references("invtypes.id");
         table.integer("character_id").unsigned().notNullable();
         table.foreign("character_id").references("character.id");
         table.string("name", 255).notNullable();
@@ -51,8 +53,11 @@ exports.up = function (knex) {
         table.timestamp("created_at").defaultTo(knex.fn.now());
       })
 
+      // create gases table
       .createTable("gases", function (table) {
         table.increments("id");
+        table.integer("typeId").unsigned().notNullable();
+        table.foreign("typeId").references("invtypes.id");
         table.integer("character_id").unsigned().notNullable();
         table.foreign("character_id").references("character.id");
         table.string("name", 255).notNullable();
@@ -61,8 +66,11 @@ exports.up = function (knex) {
         table.timestamp("created_at").defaultTo(knex.fn.now());
       })
 
+      // create ores table
       .createTable("ores", function (table) {
         table.increments("id");
+        table.integer("typeId").unsigned().notNullable();
+        table.foreign("typeId").references("invtypes.id");
         table.integer("character_id").unsigned().notNullable();
         table.foreign("character_id").references("character.id");
         table.string("name", 255).notNullable();
@@ -76,8 +84,11 @@ exports.up = function (knex) {
         table.timestamp("created_at").defaultTo(knex.fn.now());
       })
 
+      // create ices table
       .createTable("ices", function (table) {
         table.increments("id");
+        table.integer("typeId").unsigned().notNullable();
+        table.foreign("typeId").references("invtypes.id");
         table.integer("character_id").unsigned().notNullable();
         table.foreign("character_id").references("character.id");
         table.string("name", 255).notNullable();
