@@ -20,7 +20,11 @@ exports.up = function (knex) {
       .createTable("character", function (table) {
         table.increments("id");
         table.integer("user_id").unsigned().notNullable();
-        table.foreign("user_id").references("user.id");
+        table
+          .foreign("user_id")
+          .references("user.id")
+          .onUpdate("CASCADE")
+          .onDelete("CASCADE");
         table.varchar("character_owner_hash", 255).notNullable();
         table.enum("role", ["primary", "alt"]).notNullable();
         table.timestamp("first_seen").defaultTo(knex.fn.now());
@@ -31,7 +35,11 @@ exports.up = function (knex) {
       .createTable("token", function (table) {
         table.increments("id");
         table.integer("character_id").unsigned().notNullable();
-        table.foreign("character_id").references("character.id");
+        table
+          .foreign("character_id")
+          .references("character.id")
+          .onUpdate("CASCADE")
+          .onDelete("CASCADE");
         table.integer("scope_id").unsigned().notNullable();
         table.foreign("scope_id").references("scope.id");
         table.varchar("access_token", 255).notNullable();
@@ -43,7 +51,11 @@ exports.up = function (knex) {
       .createTable("moons", function (table) {
         table.increments("id");
         table.integer("typeId").notNullable();
-        table.foreign("typeId").references("invtypes.typeId");
+        table
+          .foreign("typeId")
+          .references("invtypes.typeId")
+          .onUpdate("CASCADE")
+          .onDelete("CASCADE");
         table.integer("character_id").unsigned().notNullable();
         table.foreign("character_id").references("character.id");
         table.string("name", 255).notNullable();
@@ -57,7 +69,11 @@ exports.up = function (knex) {
       .createTable("gases", function (table) {
         table.increments("id");
         table.integer("typeId").notNullable();
-        table.foreign("typeId").references("invtypes.typeId");
+        table
+          .foreign("typeId")
+          .references("invtypes.typeId")
+          .onUpdate("CASCADE")
+          .onDelete("CASCADE");
         table.integer("character_id").unsigned().notNullable();
         table.foreign("character_id").references("character.id");
         table.string("name", 255).notNullable();
@@ -70,7 +86,11 @@ exports.up = function (knex) {
       .createTable("ores", function (table) {
         table.increments("id");
         table.integer("typeId").notNullable();
-        table.foreign("typeId").references("invtypes.typeId");
+        table
+          .foreign("typeId")
+          .references("invtypes.typeId")
+          .onUpdate("CASCADE")
+          .onDelete("CASCADE");
         table.integer("character_id").unsigned().notNullable();
         table.foreign("character_id").references("character.id");
         table.string("name", 255).notNullable();
@@ -88,7 +108,11 @@ exports.up = function (knex) {
       .createTable("ices", function (table) {
         table.increments("id");
         table.integer("typeId").notNullable();
-        table.foreign("typeId").references("invtypes.typeId");
+        table
+          .foreign("typeId")
+          .references("invtypes.typeId")
+          .onUpdate("CASCADE")
+          .onDelete("CASCADE");
         table.integer("character_id").unsigned().notNullable();
         table.foreign("character_id").references("character.id");
         table.string("name", 255).notNullable();

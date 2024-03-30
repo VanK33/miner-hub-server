@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import { generateSecureRandomString } from "./utility";
 
 require("dotenv").config();
 const app = express();
@@ -20,7 +21,10 @@ app.post("/api/auth", (req, res) => {
   //   res.status(200).json({ message: "Authentication successful" });
 });
 
-
+app.get("/api/generate-state", (_req, res) => {
+  const state = generateSecureRandomString(16);
+  res.status(200).json({ state });
+});
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
