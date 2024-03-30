@@ -114,11 +114,7 @@ Note:
 
 ## CHALLENGES
 
-- Since ESI token will expire after cetain period. How to reliably save, consistently, all historical data without asking user to regularly re-authorize to the site.
-
-- **Question: What will authorization return? Will it include character id? This will potentially impact how the backend is constructed.**
-
-- **Database structure may need to refactor, user-characters link, depending on the answer from previous question.**
+A list of up to date challenges can be viewed [here](https://github.com/VanK33/miner-hub-client/docs/CHALLENGES.md)
 
 ## Acknowledgement
 
